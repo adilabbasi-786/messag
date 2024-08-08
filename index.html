@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Massage Booking Form</title>
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <h1>Massage Booking Form</h1>
+      <div class="w3_agile_main_grids">
+        <form
+          id="SignupForm"
+          action="https://formsubmit.co/adil.adilabbasi786@gmail.com"
+          method="POST"
+        >
+          <fieldset>
+            <h3>Personal information</h3>
+            <div class="form-group">
+              <div class="wthree_input">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <input
+                  id="Name"
+                  type="text"
+                  name="Name"
+                  class="form-control"
+                  placeholder="Name"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- <div class="form-group">
+              <div class="wthree_input">
+                <i class="fa fa-file-text" aria-hidden="true"></i>
+                <input
+                  id="PhoneNumber"
+                  type="text"
+                  name="PhoneNumber"
+                  class="form-control"
+                  placeholder="Phone Number"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="wthree_input">
+                <i class="fa fa-file-text" aria-hidden="true"></i>
+                <input
+                  id="WhatsAppNumber"
+                  type="text"
+                  name="WhatsAppNumber"
+                  class="form-control"
+                  placeholder="WhatsApp Number"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="wthree_input">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <h3>Select Booking Date</h3>
+                <input
+                  id="BookingDate"
+                  type="date"
+                  name="BookingDate"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="wthree_input">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <input
+                  id="Address"
+                  type="text"
+                  name="Address"
+                  class="form-control"
+                  placeholder="Address"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="wthree_input">
+                <i class="fa fa-globe" aria-hidden="true"></i>
+                <select name="Country" class="form-control">
+                  <option value="Country" selected>Country</option>
+                  <option value="Pakistan">Pakistan</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="wthree_input">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <input
+                  id="special"
+                  type="text"
+                  name="special"
+                  class="form-control"
+                  placeholder="special instruction"
+                  required
+                />
+              </div>
+            </div> -->
+          </fieldset>
+          <button
+            id="SaveAccount"
+            class="btn btn-primary agileinfo_primary submit"
+          >
+            Submit form
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/jquery.formtowizard.js"></script>
+    <script>
+      $(function () {
+        $("#SignupForm")
+          .validate({ errorElement: "em" })
+          .formToWizard({
+            submitButton: "SaveAccount",
+            prevBtnClass: "btn btn-default prev",
+            buttonTag: "button",
+            validateBeforeNext: function (form, step) {
+              var stepIsValid = true;
+              var validator = form.validate();
+              $(":input", step).each(function () {
+                stepIsValid =
+                  stepIsValid &&
+                  (typeof validator.element(this) == "undefined" ||
+                    validator.element(this));
+              });
+              return stepIsValid;
+            },
+            progress: function (i, count) {
+              $("#progress-complete").width("" + (i / count) * 100 + "%");
+            },
+          });
+      });
+    </script>
+  </body>
+</html>
